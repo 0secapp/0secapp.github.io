@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>redact</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <div class="app">
+      <header class="app-header">
+        <div>
+          <h1>redact</h1>
+          <div class="byline">by <a href="https://x.com/poteminr" target="_blank" rel="noopener noreferrer">@poteminr</a></div>
+        </div>
+        <div class="header-actions"></div>
+      </header>
+
+      <main class="app-main">
+        <section class="panel controls">
+          <div class="panel-header">Blocks</div>
+          <div id="block-list" class="block-list"></div>
+          <div class="block-actions">
+            <button id="add-block" type="button">Add block</button>
+            <button id="duplicate-block" type="button">Duplicate</button>
+            <button id="remove-block" type="button">Remove</button>
+            <button id="move-up" type="button">Move up</button>
+            <button id="move-down" type="button">Move down</button>
+          </div>
+
+          <div class="panel-header">Editor</div>
+          <form id="editor" class="editor" autocomplete="off">
+            <label>
+              <span>From</span>
+              <input id="field-from" type="text" placeholder="Sender" />
+            </label>
+            <div class="row">
+              <label>
+                <span>Date label</span>
+                <select id="field-sent-label">
+                  <option value="Sent">Sent</option>
+                  <option value="Date">Date</option>
+                </select>
+              </label>
+              <label>
+                <span>Date / Sent</span>
+                <input id="field-sent" type="text" placeholder="Timestamp" />
+              </label>
+            </div>
+            <label>
+              <span>To</span>
+              <input id="field-to" type="text" placeholder="Recipient" />
+            </label>
+            <label>
+              <span>Subject</span>
+              <input id="field-subject" type="text" placeholder="Subject" />
+            </label>
+            <label>
+              <span>Body</span>
+              <textarea id="field-body" rows="8" placeholder="Email body"></textarea>
+            </label>
+            <label>
+              <span>Footer</span>
+              <input id="field-footer" type="text" placeholder="Signature/footer" />
+            </label>
+            <div class="editor-actions">
+              <button id="redact-selection" type="button">Redact selection</button>
+              <div class="hint">Use &lt;redact&gt;...&lt;/redact&gt; (recommended) or [[...]] (legacy). You can also select text and press Redact.</div>
+            </div>
+          </form>
+
+          <div class="panel-header">Raw JSON</div>
+          <div class="raw">
+            <textarea id="raw-json" rows="10" placeholder='{"emails":[...]} or [...]'></textarea>
+            <div class="raw-actions">
+              <button id="load-json" type="button">Load JSON</button>
+              <button id="refresh-json" type="button">Refresh JSON</button>
+              <button id="download-json" type="button">Download JSON</button>
+              <button id="download-md" type="button">Download MD</button>
+            </div>
+            <div id="raw-status" class="hint"></div>
+          </div>
+        </section>
+
+        <section class="panel preview-panel">
+          <div class="panel-header">Preview</div>
+          <div class="preview-shell">
+            <div id="preview" class="preview"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
